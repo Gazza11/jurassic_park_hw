@@ -52,4 +52,27 @@ Park.prototype.yearlyRevenue = function () {
     let totalRevenue = this.totalVisitorsPerYear() * this.ticketPrice
     return totalRevenue
 }
+
+Park.prototype.removeBySpecies = function (species) {
+    for (var i = 0; i < this.dinosaurCollection.length; i++) {
+        if (this.dinosaurCollection[i].species === species) {
+            this.dinosaurCollection.splice(i, 1)
+        }
+    }
+}
+
+Park.prototype.dietObject = function () {
+    const diet = {};
+
+    for (let i = 0; i < this.dinosaurCollection.length; i++) {
+
+        if (!diet[this.dinosaurCollection[i].diet]) {
+
+            diet[this.dinosaurCollection[i].diet] = 0
+        }
+        ++diet[this.dinosaurCollection[i].diet]
+    }
+    return diet
+}
+
 module.exports = Park
