@@ -13,4 +13,16 @@ Park.prototype.removeDinosaur = function (dinosaur) {
     this.dinosaurCollection.splice(indexOfDinosaur, 1)
 }
 
+Park.prototype.attractsMost = function () {
+    let max = 0
+    let maxIndex
+    for (var i = 0; i < this.dinosaurCollection.length; i++){
+        if (this.dinosaurCollection[i].guestsAttractedPerDay > max) {
+            maxIndex = i
+            max = this.dinosaurCollection[i].guestsAttractedPerDay
+        }
+    }
+    return this.dinosaurCollection[maxIndex]
+}
+
 module.exports = Park
